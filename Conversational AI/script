@@ -1,7 +1,7 @@
 #!/bin/bash
 command="jupyter nbconvert --to script *.ipynb"
 
-for i in {1..5}
+for i in {1..7}
 do
     cd $i
     $command

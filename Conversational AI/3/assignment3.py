@@ -7,7 +7,7 @@
 get_ipython().run_line_magic('pip', 'install nltk')
 
 
-# # Akshat Sharma 102217107 3CS4
+# 
 
 # In[2]:
 
@@ -23,7 +23,7 @@ df = pd.read_csv("docs/IMDB_Dataset.csv")
 # print(df.head())
 
 
-# In[ ]:
+# In[4]:
 
 
 corpus=[]
@@ -32,7 +32,7 @@ for i in range(100):
 # print(corpus)
 
 
-# In[ ]:
+# In[5]:
 
 
 lower=[]
@@ -41,7 +41,7 @@ for i in corpus:
 # print(lower)
 
 
-# In[ ]:
+# In[6]:
 
 
 alpha=[]
@@ -50,7 +50,7 @@ for i in lower:
 # alpha
 
 
-# In[11]:
+# In[24]:
 
 
 tokenize=[]
@@ -59,7 +59,7 @@ for i in alpha:
 # tokenize
 
 
-# In[13]:
+# In[8]:
 
 
 from nltk.corpus import *
@@ -70,7 +70,7 @@ for i in tokenize:
 # no_stop
 
 
-# In[24]:
+# In[9]:
 
 
 final=[] #will contain final pre-processed documents
@@ -83,7 +83,7 @@ for i in no_stop:
 
 # # Binary TDM
 
-# In[74]:
+# In[10]:
 
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -94,7 +94,7 @@ binary_tdm_inbuilt=pd.DataFrame(X.toarray().T,index=cv.get_feature_names_out(),c
 binary_tdm_inbuilt.shape
 
 
-# In[71]:
+# In[11]:
 
 
 doc_count={} #dictionary for each document
@@ -107,7 +107,7 @@ for i in range(len(final)):
 # doc_count
 
 
-# In[73]:
+# In[12]:
 
 
 binary_tdm_scratch = pd.DataFrame(doc_count)
@@ -117,7 +117,7 @@ binary_tdm_scratch.shape
 
 # # Term Frequency Matrix
 
-# In[78]:
+# In[13]:
 
 
 doc_count1={} #dictionary for each document
@@ -131,7 +131,7 @@ for i in range(len(final)):
 # doc_count1
 
 
-# In[75]:
+# In[14]:
 
 
 #Converting dictionary to term frequency TDM dataframe
@@ -140,7 +140,7 @@ tdm_tf_scratch.fillna(0,inplace=True)
 tdm_tf_scratch.shape
 
 
-# In[86]:
+# In[15]:
 
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -153,7 +153,7 @@ tdm_tf_inbuilt.shape
 
 # # TDM Length Normalization
 
-# In[64]:
+# In[16]:
 
 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -163,7 +163,7 @@ tdm_len_norm_inbuilt=pd.DataFrame(Z.toarray().T,index=tf.get_feature_names_out()
 tdm_len_norm_inbuilt.shape
 
 
-# In[63]:
+# In[17]:
 
 
 tdm_length_norm_scratch=tdm_tf_scratch.iloc[:,:].div(tdm_tf_scratch.sum(axis=0),axis=1)
@@ -172,7 +172,7 @@ tdm_length_norm_scratch.shape
 
 # # TF IDF
 
-# In[56]:
+# In[18]:
 
 
 import numpy as np
@@ -190,14 +190,14 @@ idf = pd.DataFrame(idf_series)
 idf.head()
 
 
-# In[79]:
+# In[19]:
 
 
 tf_idf_scratch=tdm_length_norm_scratch*idf.values
 tf_idf_scratch.head()
 
 
-# In[80]:
+# In[20]:
 
 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -207,7 +207,7 @@ tf_idf_inbuilt=pd.DataFrame(U.toarray().T,index=tf1.get_feature_names_out(),colu
 tf_idf_inbuilt.head()
 
 
-# In[41]:
+# In[21]:
 
 
 co_occur_matrix=np.dot(binary_tdm_scratch.values,binary_tdm_scratch.values.T)
@@ -217,7 +217,7 @@ co_occur_matrix=pd.DataFrame(co_occur_matrix, index=binary_tdm_scratch.index,
 co_occur_matrix.head()
 
 
-# In[81]:
+# In[22]:
 
 
 term_frequency = pd.DataFrame(binary_tdm_scratch.sum(axis=1))
