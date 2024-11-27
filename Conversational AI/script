@@ -1,6 +1,4 @@
 #!/bin/bash
-
-# Replace "your_command" with the actual command you want to execute
 command="jupyter nbconvert --to script *.ipynb"
 
 for i in {1..5}
