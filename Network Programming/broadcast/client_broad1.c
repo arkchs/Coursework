@@ -18,7 +18,7 @@ int main(int argc, const char *argv[])
     struct sockaddr_in broadcastaddr;
     char buf[N] = {0};
 
-    if((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
+    if((sockfd = sockset(AF_INET, SOCK_DGRAM, 0)) < 0)
     {
         err_log("fail to socket");
     }
