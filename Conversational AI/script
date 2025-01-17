@@ -1,9 +1,8 @@
 #!/bin/bash
 command="jupyter nbconvert --to script *.ipynb"
-
-for i in {1..7}
+for i in {1}
 do
-    cd $i
+    cd ../Quantum\ Computing/
     $command
     cd ..
 done
