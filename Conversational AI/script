@@ -1,5 +1,5 @@
 #!/bin/bash
-command="jupyter nbconvert --to script *.ipynb"
+command="python -m jupyter nbconvert --to script *.ipynb"
 for i in {1}
 do
     cd ../Quantum\ Computing/

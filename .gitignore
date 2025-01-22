@@ -1,3 +1,6 @@
 API_KEYS.py
 *.ipynb
 *.csv
+*.png
+*.jpg
+*.jpeg
